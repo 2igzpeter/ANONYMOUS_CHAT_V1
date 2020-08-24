@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Material Design for Bootstrap</title>
+    <!--JQUERRY SCRIPT-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+    <!--JQUERRY SCRIPT-->  
+
+
+
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+
+
+    <!--CSS -->
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form input { border: 0; padding: 10px; width: 90%; margin-right: 0.5%; }
+     
+    </style>
+    <!--FIN CSS -->
+  </head>
+  <body>
+
+
+
+            <!--CARD CHAT-->
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-4">
+
+              </div>
+              <div class="col-md-4">
+                    <ul id="messages"></ul>
+              </div>
+              <div class="col-md-4">
+
+              </div>
+            </div>
+          </div>
+          <!--FIN CARD CHAT-->
+
+
+
+
+
+
+            <!--FORMULAIRE-->
+            <form action="">
+              <input class="form-control form-control-lg" id="m" autocomplete="off" type="text" placeholder="Message" required>
+              <button class="btn btn-block elegant text-white">Envoyer</button>
+            </form>
+            <!--FIN FORMULAIRE-->
+
+
+
+            <!--SCRIPT SOCKET IO-->         
+            <script src="/socket.io/socket.io.js"></script>
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+            <!--FIN SCRIPT SOCKET IO--> 
+
+
+
+
+
+
+
+
+              <!--CODE JAVASCRIPT SOCKET IO-->
+              <script>
+                $(function () {
+                  
+                  var socket = io();
+                  $('form').submit(function(e){
+                    e.preventDefault(); // prevents page reloading
+                    socket.emit('chat message', $('#m').val());
+                    $('#m').val('');
+                    return false;
+                  });
+                  socket.on('chat message', function(msg){
+                    $('#messages').append($('<div class="card testimonial-card"><!-- Background color --><div class="card"></div><!-- Avatar --><div class="avatar w-100 white d-flex justify-content-center align-items-center p-3"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F765616198470012929%2FMlvZOjIn.jpg&f=1&nofb=1" class="rounded-circle z-depth-1 img-fluid"alt="anonymous"></div><!-- Content --><div class="card-body "><!-- Name --><h4 class="card-title " style="text-align: center;">Un anonyme à dit:</h4><hr><!-- Quotation --><h1><i class="fas fa-quote-left"></i> '+msg+'</h1></div></div></br></br></br></br></br></br></br>'));
+
+                  });
+                });
+              </script>
+              <!--CODE JAVASCRIPT SOCKET IO-->
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+
+
+
+
+
+
+
+  </body>
+
+</html>
